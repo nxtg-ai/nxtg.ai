@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Implementation Paradox</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Implementation Paradox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+        .chart-container {
+            position: relative;
+            height: 500px;
+            margin: 30px 0;
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            border-left: 3px solid #2196f3;
+            border-bottom: 3px solid #34495e;
+            padding: 20px;
+        }
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+            position: relative;
+        }
+        .bar-visual {
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .bar-visual:hover {
+            transform: translateY(-5px);
+        }
+        .investment-bar {
+            background: linear-gradient(45deg, #2196f3, #1976d2);
+            height: 400px;
+            width: 80px;
+        }
+        .exploring-bar {
+            background: linear-gradient(45deg, #4caf50, #388e3c);
+            height: 352px;
+            width: 80px;
+        }
+        .pilot-bar {
+            background: linear-gradient(45deg, #ff9800, #f57c00);
+            height: 248px;
+            width: 80px;
+        }
+        .integrated-bar {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+            height: 8px;
+            width: 80px;
+            color: transparent; /* Hide text inside the bar */
+        }
+        .bar-label {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #2c3e50;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+        .axis-label {
+            position: absolute;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .left-axis {
+            left: -110px;
+            top: 50%;
+            transform: rotate(-90deg);
+            color: #2196f3;
+        }
+        .right-axis {
+            right: -90px;
+            top: 50%;
+            transform: rotate(90deg);
+            color: #4caf50;
+        }
+        .insights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .insight-box {
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+        .investment {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        .integration {
+            background: #ffebee;
+            border-color: #f44336;
+        }
+        .data-table {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        th {
+            background: #34495e;
+            color: white;
+            font-weight: bold;
+        }
+        .value {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .paradox-note {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            color: #856404;
+        }
+        .scale {
+            position: absolute;
+            font-size: 10px;
+            color: #666;
+        }
+        .left-scale {
+            left: 10px;
+            color: #2196f3;
+            background: rgba(255,255,255,0.8);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .value-above {
+            position: absolute;
+            top: -30px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #f44336;
+            background: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 2px solid #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Logo" class="logo-img">
+        <h1 class="title">The AI Implementation Paradox</h1>
+        <p class="subtitle">Massive Investment vs. Minimal Integration</p>
+        
+        <div class="chart-container">
+            <div class="axis-label left-axis">Investment (Billions USD)</div>
+            <div class="axis-label right-axis">Company Status (%)</div>
+            
+            <!-- Scale markers -->
+            <div class="scale left-scale scale-top-10">$700B</div>
+            <div class="scale left-scale scale-top-110">$500B</div>
+            <div class="scale left-scale" style="top: 210px;">$300B</div>
+            <div class="scale left-scale" style="top: 310px;">$100B</div>
+            <div class="scale left-scale" style="top: 410px;">$0</div>
+            
+            <div class="scale right-scale" style="top: 10px;">100%</div>
+            <div class="scale right-scale" style="top: 110px;">75%</div>
+            <div class="scale right-scale" style="top: 210px;">50%</div>
+            <div class="scale right-scale" style="top: 310px;">25%</div>
+            <div class="scale right-scale" style="top: 410px;">0%</div>
+            
+            <div class="bar">
+                <div class="bar-visual investment-bar">$644B</div>
+                <div class="bar-label">AI Spend<br>2025</div>
+            </div>
+            
+            <div class="bar">
+                <div class="bar-visual exploring-bar">88%</div>
+                <div class="bar-label">Companies<br>Exploring AI</div>
+            </div>
+            
+            <div class="bar">
+                <div class="bar-visual pilot-bar">62%</div>
+                <div class="bar-label">Companies in<br>Pilot Phase</div>
+            </div>
+            
+            <div class="bar">
+                <div class="bar-visual integrated-bar">
+                    <div class="value-above">2%</div>
+                </div>
+                <div class="bar-label">Companies<br>Fully Integrated</div>
+            </div>
+        </div>
+
+        <div class="insights">
+            <div class="insight-box investment">
+                <h3>💰 Investment Reality</h3>
+                <p><span style="font-size: 2em; font-weight: bold; color: #2196f3;">$644 billion</span><br>
+                Projected AI spending in 2025</p>
+            </div>
+            
+            <div class="insight-box integration">
+                <h3>⚠️ Integration Gap</h3>
+                <p>Only <span style="font-size: 2em; font-weight: bold; color: #f44336;">2%</span><br>
+                have actually integrated AI<br>
+                <small style="color: #666;">(88% exploring, 62% piloting ≠ adoption)</small></p>
+            </div>
+        </div>
+
+        <div class="data-table">
+            <h3>📊 Data Summary</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Value</th>
+                        <th>Unit</th>
+                        <th>Visual Axis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI Spend 2025</td>
+                        <td class="value" style="color: #2196f3;">644</td>
+                        <td>Billion $</td>
+                        <td>Left Y-axis</td>
+                    </tr>
+                    <tr>
+                        <td>Companies Exploring AI</td>
+                        <td class="value" style="color: #4caf50;">88</td>
+                        <td>%</td>
+                        <td>Right Y-axis</td>
+                    </tr>
+                    <tr>
+                        <td>Companies in Pilot Phase</td>
+                        <td class="value" style="color: #ff9800;">62</td>
+                        <td>%</td>
+                        <td>Right Y-axis</td>
+                    </tr>
+                    <tr>
+                        <td>Companies Fully Integrated</td>
+                        <td class="value" style="color: #f44336;">2</td>
+                        <td>%</td>
+                        <td>Right Y-axis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="paradox-note">
+            <strong>The Paradox:</strong> $644B investment vs. only 2% actual AI integration. Exploring (88%) and piloting (62%) are not the same as adopting AI.
+        </div>
+    </div>
+</body>
+</html>
